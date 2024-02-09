@@ -1,3 +1,5 @@
+import iziToast from 'izitoast';
+
 const form = document.querySelector("form.form");
 
 form.addEventListener('submit', (e) => {
@@ -11,10 +13,28 @@ function doWork(delay, step, count) {
     for (let i = 0; i < count; i++) {
         createPromise(i + 1, delay + step * i)
             .then(({ position, delay }) => {
-                console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
+                iziToast.show({
+                    message: `✅ Fulfilled promise ${position} in ${delay}ms`,
+                    position: 'topRight',
+                    balloon: true,
+                    close: false,
+                    backgroundColor: 'green',
+                    maxWidth: 300,
+                    timeout: false,
+                    targetFirst: false,
+                });
             })
             .catch(({ position, delay }) => {
-                console.log(`❌ Rejected promise ${position} in ${delay}ms`);
+                iziToast.show({
+                    title: `❌ Rejected promise ${position} in ${delay}ms`,
+                    position: 'topRight',
+                    balloon: true,
+                    close: false,
+                    backgroundColor: 'red',
+                    maxWidth: 300,
+                    timeout: false,
+                    targetFirst: false,
+                });
             });
     }
 }
