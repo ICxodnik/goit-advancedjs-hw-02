@@ -9,18 +9,18 @@
   <body>
     <p><a href="index.html">Go back</a></p>
 
-    <form class="form">
+    <form class="form promise-form">
       <label>
         First delay (ms)
-        <input type="number" name="delay" required />
+        <input type="number" name="delay" required step="100" value="0" />
       </label>
       <label>
         Delay step (ms)
-        <input type="number" name="step" required />
+        <input type="number" name="step" required step="100" value="0" />
       </label>
       <label>
         Amount
-        <input type="number" name="amount" required />
+        <input type="number" name="amount" required step="1" value="1" />
       </label>
       <button type="submit">Create promises</button>
     </form>

@@ -1,4 +1,5 @@
 import iziToast from 'izitoast';
+import "izitoast/dist/css/iziToast.min.css";
 
 const form = document.querySelector("form.form");
 
@@ -14,26 +15,16 @@ function doWork(delay, step, count) {
         createPromise(i + 1, delay + step * i)
             .then(({ position, delay }) => {
                 iziToast.show({
-                    message: `✅ Fulfilled promise ${position} in ${delay}ms`,
+                    title: `✅ Fulfilled promise ${position} in ${delay}ms`,
                     position: 'topRight',
-                    balloon: true,
-                    close: false,
-                    backgroundColor: 'green',
-                    maxWidth: 300,
-                    timeout: false,
-                    targetFirst: false,
+                    backgroundColor: '#ddeedc',
                 });
             })
             .catch(({ position, delay }) => {
                 iziToast.show({
                     title: `❌ Rejected promise ${position} in ${delay}ms`,
                     position: 'topRight',
-                    balloon: true,
-                    close: false,
-                    backgroundColor: 'red',
-                    maxWidth: 300,
-                    timeout: false,
-                    targetFirst: false,
+                    backgroundColor: '#f1807e',
                 });
             });
     }

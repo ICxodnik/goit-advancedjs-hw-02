@@ -1,12 +1,14 @@
 import flatpickr from "flatpickr";
-
+import iziToast from "izitoast";
+import "izitoast/dist/css/iziToast.min.css";
 import "flatpickr/dist/flatpickr.min.css";
 
 const startBtn = document.querySelector("button[data-start]");
-const days = document.querySelector("span[data-days]");
-const hours = document.querySelector("span[data-hours]");
-const minutes = document.querySelector("span[data-minutes]");
-const seconds = document.querySelector("span[data-seconds]");
+const daysRef = document.querySelector("span[data-days]");
+const hoursRef = document.querySelector("span[data-hours]");
+const minutesRef = document.querySelector("span[data-minutes]");
+const secondsRef = document.querySelector("span[data-seconds]");
+const timerRef = document.getElementById("datetime-picker");
 
 let selectedDate;
 const options = {
@@ -18,11 +20,13 @@ const options = {
         selectedDate = selectedDates[0];
 
         if (selectedDate < new Date()) {
-            window.alert("Please choose a date in the future");
+            iziToast.warning({
+                title: "Caution",
+                message: "Please choose a date in the future",
+            });
             startBtn.disabled = true;
             return;
         }
-
         startBtn.disabled = false;
     },
 };
@@ -32,6 +36,7 @@ flatpickr("input#datetime-picker", options);
 startBtn.disabled = true;
 startBtn.addEventListener('click', () => {
     startBtn.disabled = true;
+    timerRef.disabled = true;
     const timer = setInterval(() => {
         const remaining = displayTimeRemaining(selectedDate);
         if (remaining < 1000) { // less then a second
@@ -44,10 +49,10 @@ function displayTimeRemaining(targetDate) {
     const remaining = targetDate.getTime() - Date.now();
     const timeParts = convertMs(remaining);
 
-    days.textContent = addLeadingZero(timeParts.days);
-    hours.textContent = addLeadingZero(timeParts.hours);
-    minutes.textContent = addLeadingZero(timeParts.minutes);
-    seconds.textContent = addLeadingZero(timeParts.seconds);
+    daysRef.textContent = addLeadingZero(timeParts.days);
+    hoursRef.textContent = addLeadingZero(timeParts.hours);
+    minutesRef.textContent = addLeadingZero(timeParts.minutes);
+    secondsRef.textContent = addLeadingZero(timeParts.seconds);
 
     return remaining;
 }
