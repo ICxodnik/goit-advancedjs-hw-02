@@ -7,25 +7,25 @@
     
     <script type="module" crossorigin src="/goit-advancedjs-hw-02/commonHelpers3.js"></script>
     <link rel="modulepreload" crossorigin href="/goit-advancedjs-hw-02/assets/modulepreload-polyfill-3cfb730f.js">
-    <link rel="modulepreload" crossorigin href="/goit-advancedjs-hw-02/assets/vendor-e76d23d4.js">
-    <link rel="stylesheet" href="/goit-advancedjs-hw-02/assets/vendor-21fdfc57.css">
-    <link rel="stylesheet" href="/goit-advancedjs-hw-02/assets/common-24e32714.css">
+    <link rel="modulepreload" crossorigin href="/goit-advancedjs-hw-02/assets/vendor-ceb9b81e.js">
+    <link rel="stylesheet" href="/goit-advancedjs-hw-02/assets/vendor-1eb1cd71.css">
+    <link rel="stylesheet" href="/goit-advancedjs-hw-02/assets/common-bcd6cded.css">
   </head>
   <body>
     <p><a href="index.html">Go back</a></p>
 
-    <form class="form">
+    <form class="form promise-form">
       <label>
         First delay (ms)
-        <input type="number" name="delay" required />
+        <input type="number" name="delay" required step="100" value="0" />
       </label>
       <label>
         Delay step (ms)
-        <input type="number" name="step" required />
+        <input type="number" name="step" required step="100" value="0" />
       </label>
       <label>
         Amount
-        <input type="number" name="amount" required />
+        <input type="number" name="amount" required step="1" value="1" />
       </label>
       <button type="submit">Create promises</button>
     </form>
